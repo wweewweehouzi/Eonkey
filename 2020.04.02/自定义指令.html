@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>VUE自定义指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-color='color'>
+        <p>{{msg}}</p>
+        <h2>{{msg.split('').reverse().join('')}}</h2>
+    </div>
+
+    <script>
+        Vue.directive('color', {
+            inserted: function(el, binding) {
+                el.style.backgroundColor = binding.value;
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                color: 'blue',
+            },
+            methods: {
+                handle: function(el) {
+                    console.log(el.target)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

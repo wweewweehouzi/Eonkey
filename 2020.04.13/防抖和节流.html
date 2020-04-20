@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖和节流</title>
+</head>
+
+<body>
+    <div id="content" style="height: 100px;background-color: #333;color: #ffffff;text-align: center;font-size: 64px;font-weight: 800;line-height: 100px;">1</div>
+
+    <script>
+        const content = document.querySelector('#content');
+        let num = 1;
+
+        function count() {
+            content.innerHTML = num++;
+        }
+
+        //防抖 后执行
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                if (timeout) clearTimeout(timeout); //取消之前的定时器
+                timeout = setTimeout(function() {
+                    func.apply(this);
+                }, wait);
+
+            }
+        }
+
+
+        //防抖 先执行
+        // function debounce(func, wait) {
+        //     let timeout;
+        //     return function() {
+        //         if (timeout) clearTimeout(timeout); //取消之前的定时器
+
+        //         console.log(timeout);
+        //         console.log(!timeout);
+        //         let callNow = !timeout;
+        //         timeout = setTimeout(function() {
+        //             timeout = null;
+        //         }, wait);
+
+        //         if (callNow) func.apply(this);
+
+        //     }
+        // }
+
+
+        //节流 定时器
+
+        // function debounce(func, wait) {
+        //     let timeout;
+        //     return function() {
+        //         if (!timeout) {
+        //             timeout = setTimeout(() => {
+        //                 timeout = null;
+        //                 func.apply();
+        //             }, wait)
+        //         }
+        //     }
+        // }
+
+        // 节流 时间戳
+        // function debounce(func, wait) {
+        //     let prev = 0;
+        //     console.log(prev)
+        //     return function() {
+        //         let now = Date.now();
+        //         if (now - prev > wait) {
+        //             func.apply();
+        //             prev = now;
+        //         }
+        //     }
+        // }
+
+
+        // content.onmousemove = debounce(count, 500);
+    </script>
+</body>
+
+
+</html>

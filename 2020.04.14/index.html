@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let p1 = new Promise(function(a, b) {
+        //     a()
+        // })
+
+        // p1.then(function() {
+        //     console.log("成功！")
+        // });
+
+        function* helloWorld() {
+            yield "hello";
+            yield "world";
+            yield "zhaoqian";
+            yield "monkey";
+            return "ending";
+        }
+
+        let hw = helloWorld();
+        let objHw = hw.next();
+        while (objHw.done == false) {
+            console.log(objHw.value);
+            objHw = hw.next();
+        }
+
+        function tsetable(target) {
+            console.log("我是testable函数", target);
+        }
+
+        @tsetable
+        class MyTestable {
+
+        }
+    </script>
+
+</body>
+
+</html>

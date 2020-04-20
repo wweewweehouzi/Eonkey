@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // sl.__proto__ === Student.prototype // false
+        // // sl.__proto__ === Student.prototype = Person.ptototype// false
+        // s1.__proto === Person.prototype //true
+
+        // // 如果想要改变，使S1.__proto__ = Student.prototype,那么强行改变
+        // Person.prototype.constructor = Student
+
+        function Person(pname, age) {
+            this.pname = pname;
+            this.age = age;
+        }
+    </script>
+</body>
+
+</html>
