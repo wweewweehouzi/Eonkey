@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue事件插槽</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fruit-list :clist='fList'>
+            <template slot-scope='slotProps'>
+                <strong v-if='slotProps.info.id == 2' style="color:red">
+                    {{slotProps.info.name}}
+                </strong>
+                <span v-else>{{slotProps.info.name}}</span>
+            </template>
+        </fruit-list>
+
+    </div>
+
+    <script>
+        //作用域插槽
+        Vue.component('fruit-list', {
+            props: ['clist'],
+            template: `
+                <div>
+                    <ul>
+                        <li :key='item.id' v-for='item in clist'>
+                            <slot :info='item'>{{item.name}}</slot>
+                        </li>
+                    </ul>
+                </div>
+            `,
+
+
+        });
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                fList: [{
+                    id: 1,
+                    name: 'apple'
+                }, {
+                    id: 2,
+                    name: 'orange'
+                }, {
+                    id: 3,
+                    name: 'banana'
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

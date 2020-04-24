@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue组件</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div>{{pmsg}}</div>
+
+        <child :title='ptitle'></child> -->
+        <div :style='{fontSize: fontSize + "px"}'>{{pmsg}}</div>
+        <child :parr='parr' @changsize='handle()'></child>
+
+    </div>
+
+    <script>
+        //创建一个子组件
+        // Vue.component('child', {
+        //     props: ['title'],
+        //     data() {
+        //         return {
+        //             msg: '我是子组件的数据'
+        //         }
+        //     },
+        //     template: '<div>{{msg}}--{{title}}</div>'
+        // })
+
+        // var vm = new Vue({
+        //     el: '#app',
+        //     data: {
+        //         pmsg: '父组件data',
+        //         ptitle: '父组件标题'
+        //     }
+        // })
+
+        //子组件向父组件传值
+        Vue.component('child', {
+            props: ['parr'],
+            template: `
+                <div>
+                    <ul>
+                        <li :key='index' v-for='(item, index) in parr'>{{item}}</li>
+                    </ul>
+
+                    <button @click='$emit("changsize")'>变大</button>
+                </div>  
+           `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                parr: ['monkey', '老杜', '赵谦'],
+                pmsg: '父组件标题',
+                fontSize: 10,
+            },
+            methods: {
+                handle: function() {
+                    this.fontSize += 5;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
