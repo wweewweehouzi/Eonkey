@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue购物车</title>
+
+
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+
+    </div>
+
+    <script>
+        // var p = new Promise(function(resolve, reject) {
+        //     setTimeout(function() {
+        //         var flag = true;
+        //         if (flag) {
+        //             resolve('hello')
+        //         } else {
+        //             reject('出错了!')
+        //         }
+        //     }, 100)
+        // });
+
+        // p.then(function(data) {
+        //     console.log(data);
+        // }, function(data) {
+        //     console.log(data);
+        // })
+
+        function foo() {
+            return new Promise(function(resolve, reject) {
+                // resolve("成功！");
+                reject('失败！')
+            })
+        };
+
+        foo().then((data) => console.log(data))
+            .catch((data) => console.log(data))
+    </script>
+
+
+</body>
+
+</html>
