@@ -34,15 +34,20 @@
         //     console.log(data);
         // })
 
-        function foo() {
-            return new Promise(function(resolve, reject) {
-                // resolve("成功！");
-                reject('失败！')
-            })
-        };
+        // function foo() {
+        //     return new Promise(function(resolve, reject) {
+        //         // resolve("成功！");
+        //         reject('失败！')
+        //     })
+        // };
 
-        foo().then((data) => console.log(data))
-            .catch((data) => console.log(data))
+        // foo().then((data) => console.log(data))
+        //     .catch((data) => console.log(data))
+
+        //axios
+        axios.get('Url').then((data) => {
+            console.log(data.data)
+        });
     </script>
 
 
