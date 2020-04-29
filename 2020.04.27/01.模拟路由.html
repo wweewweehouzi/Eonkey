@@ -22,7 +22,7 @@
 
         <!-- 根据 :is 属性指定的组件名称，把对应的组件渲染到 component 标签所在的位置 -->
         <!-- 可以把 component 标签当做是【组件的占位符】 -->
-        <component :is="'zhuye'"></component>
+        <component :is="comName"></component>
     </div>
 
     <script>
@@ -67,6 +67,22 @@
         // 监听 window 的 onhashchange 事件，根据获取到的最新的 hash 值，切换要显示的组件的名称
         window.onhashchange = function() {
             // 通过 location.hash 获取到最新的 hash 值
+            // console.log(location.hash)
+
+            switch (location.hash.slice(1)) {
+                case '/zhuye':
+                    vm.comName = 'zhuye'
+                    break
+                case '/keji':
+                    vm.comName = 'keji';
+                    break
+                case '/caijing':
+                    vm.comName = 'caijing';
+                    break
+                case '/yule':
+                    vm.comName = 'yule';
+                    break
+            }
         }
     </script>
 </body>

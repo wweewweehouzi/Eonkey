@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- 导入 vue 文件 -->
+    <script src="./lib/vue_2.5.22.js"></script>
+    <script src="./lib/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+    <!-- 被 vue 实例控制的 div 区域 -->
+    <div id="app">
+        <router-link to="/user/1">User</router-link>
+        <router-link to="/user/2">User</router-link>
+        <router-link to="/user/3">User</router-link>
+        <router-link to="/user/4">User</router-link>
+        <router-link to="/user/5">User</router-link>
+        <router-link to="/register">Register</router-link>
+
+        <!-- 路由占位符 -->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const User = {
+            template: ` <h1>User 组件--{{$route.params.id}}</h1>`
+        }
+
+        const Register = {
+            template: ` <h1>Register 组件</h1>`
+        }
+
+        const router = new VueRouter({
+            routes: [{
+                path: '/',
+                redirect: '/register'
+            }, {
+                path: '/user/:id',
+                component: User
+            }, {
+                path: '/register',
+                component: Register
+            }]
+        })
+
+        // #region vue 实例对象
+        const vm = new Vue({
+            el: '#app',
+            //挂载路由 es6中两个名字一样可以省略 写成routr，
+            router: router,
+            data: {
+
+            },
+
+
+        })
+    </script>
+</body>
+
+</html>
